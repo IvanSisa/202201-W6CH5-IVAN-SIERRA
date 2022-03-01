@@ -6,7 +6,7 @@ export async function mongoConnect() {
     const user = process.env.DBUSER;
     const password = process.env.DBPASSWD;
     const dbName = process.env.DBNAME;
-    const uri = `mongodb+srv://${user}:${password}@cluster0.dj9ya.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+    const uri = `mongodb+srv://${user}:${password}@cluster0.ojc5i.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
     const mongooseConnect = await mongoose.connect(uri);
     return mongooseConnect;
@@ -23,7 +23,7 @@ export async function installRobots(data, collection = 'robots') {
 
 export async function robotsConnect(collection = 'robots') {
 
-    const connection = await mongoConnect();
+    await mongoConnect();
     const robotSchema = new mongoose.Schema({
         title: String,
         type: String,
@@ -37,5 +37,5 @@ export async function robotsConnect(collection = 'robots') {
     } else {
         Robot = mongoose.model(collection, robotSchema);
     }
-    return { Robot, connection };
+    return { Robot };
 }

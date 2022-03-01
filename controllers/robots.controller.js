@@ -1,7 +1,7 @@
 import * as crud from '../services/crud.js';
 import { robotsConnect } from '../services/db.js';
 
-const Robot = robotsConnect();
+const {Robot} = await robotsConnect();
 
 export const getAllRobots = (req, res) => {
     crud.getAllRobots(Robot).then((resp) => {
